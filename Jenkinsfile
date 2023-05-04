@@ -4,7 +4,9 @@ pipeline{
        
         maven 'mymaven'
     }
-	agent any
+	//agent any
+    agent {label 'linux_node'}
+    
       stages{
            stage('Checkout'){
 	    
