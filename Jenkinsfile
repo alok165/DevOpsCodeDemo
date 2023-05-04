@@ -5,7 +5,7 @@ pipeline{
         maven 'mymaven'
     }
 	//agent any
-    agent {label 'linux_node'}
+    agent none
 
       stages{
            stage('Checkout'){
@@ -16,7 +16,7 @@ pipeline{
               }
           }
           stage('Compile'){
-             
+             agent {label 'linux_node'}
               steps{
                   echo 'complie the code..'
                   sh 'mvn compile'
@@ -38,9 +38,8 @@ pipeline{
               }
           
           }
-         agent {label 'linux_node2'}
           stage('Package'){
-		  
+		  agent {label 'linux_node2'}
               steps{
 		          echo 'packing'
                   sh 'mvn package'
