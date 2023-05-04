@@ -8,10 +8,10 @@ pipeline{
     agent none
 
       stages{
-           stage('Checkout'){
-	    
+         stage('Checkout'){
+            agent any
                steps{
-		 echo 'cloning'
+		          echo 'cloning'
                   git 'https://github.com/alok165/DevOpsCodeDemo.git'
               }
           }
@@ -23,24 +23,24 @@ pipeline{
 	      }
           }
           stage('CodeReview'){
-		  
+		      agent any
               steps{
 		    
 		  echo 'codeReview'
                   sh 'mvn pmd:pmd'
               }
           }
-           stage('UnitTest'){
-		  
-              steps{
+          stage('UnitTest'){
+		     agent any
+               steps{
 	         
                   sh 'mvn test'
               }
           
           }
           stage('Package'){
-		  agent {label 'linux_node2'}
-              steps{
+		      agent {label 'linux_node2'}
+               steps{
 		          echo 'packing'
                   sh 'mvn package'
               }
