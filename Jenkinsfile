@@ -9,7 +9,7 @@ pipeline{
 
       stages{
          stage('Checkout'){
-            agent any
+            agent {label 'linux_node'}
                steps{
 		          echo 'cloning'
                   git 'https://github.com/alok165/DevOpsCodeDemo.git'
@@ -23,7 +23,7 @@ pipeline{
 	      }
           }
           stage('CodeReview'){
-		      agent any
+		      agent {label 'linux_node'}
               steps{
 		    
 		  echo 'codeReview'
@@ -31,7 +31,7 @@ pipeline{
               }
           }
           stage('UnitTest'){
-		     agent any
+		     agent {label 'linux_node'}
                steps{
 	         
                   sh 'mvn test'
