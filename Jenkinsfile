@@ -6,7 +6,7 @@ pipeline{
     }
 	//agent any
     agent {label 'linux_node'}
-    
+
       stages{
            stage('Checkout'){
 	    
@@ -38,11 +38,11 @@ pipeline{
               }
           
           }
-        
+         agent {label 'linux_node2'}
           stage('Package'){
 		  
               steps{
-		  
+		          echo 'packing'
                   sh 'mvn package'
               }
           }
